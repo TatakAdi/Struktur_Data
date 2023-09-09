@@ -60,7 +60,7 @@ linked_list = LinkedList()
 
 # Meminta angka dari komputer
 for angka in range(101):
-    angka_random = random.randint(1, 1000)
+    angka_random = random.randint(1, 500)
     linked_list.push(angka_random)
 
 # Menampilkan isi linke list sebelum dilakukan bubble sorting
