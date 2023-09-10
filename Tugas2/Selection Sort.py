@@ -1,11 +1,12 @@
 def selection_sort (array):
-    for index in range (len(array)):
-        min_index = index
-        for j in range (index +1, len(array)):
+    for i in range (len(array)):
+        min_index = i
+        #Menemukan elemen terkecil dari array yang belum terurutkan
+        for j in range (i + 1, len(array)):
             if array[min_index] > array[j]:
                 min_index = j
-        print("Value yang ditukar : {} dengan {}".format(array[index],array[min_index]))
-        array[index],array[min_index] = array[min_index], array[index]
+        print("Value yang ditukar : {} dengan {}".format(array[i],array[min_index]))
+        array[i],array[min_index] = array[min_index], array[i]
         print(array)
 
 arr = [10,50,4,6,7,10,47,20]
