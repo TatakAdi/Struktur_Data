@@ -5,6 +5,8 @@ def selection_sort (array):
         for j in range (i + 1, len(array)):
             if array[min_index] > array[j]:
                 min_index = j
+        
+        #Menukar value dalam array dengan selection sort
         print("Value yang ditukar : {} dengan {}".format(array[i],array[min_index]))
         array[i],array[min_index] = array[min_index], array[i]
         print(array)

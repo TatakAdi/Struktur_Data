@@ -43,15 +43,15 @@ class LinkedList:
                 if current.data > current.next.data:
                     current.data, current.next.data = current.next.data, current.data
                     swapped = True
-                    print(
-                        "Value yang ditukar = {sebelum} dengan {sesudah}".format(
-                            sebelum=current.data, sesudah=current.next.data
-                        )
-                    )
-                    self.tampilkan()
-                    print(
-                        "=============================================================================================================="
-                    )
+                    # print(
+                    #     "Value yang ditukar = {sebelum} dengan {sesudah}".format(
+                    #         sebelum=current.data, sesudah=current.next.data
+                    #     )
+                    # )
+                    # self.tampilkan()
+                    # print(
+                    #     "=============================================================================================================="
+                    # )
                 current = current.next
 
 
@@ -59,7 +59,7 @@ class LinkedList:
 linked_list = LinkedList()
 
 # Meminta angka dari komputer
-for angka in range(101):
+for angka in range(5):
     angka_random = random.randint(1, 500)
     linked_list.push(angka_random)
 
@@ -68,8 +68,10 @@ print("Linked list sebelum dilakukan bubble sorting")
 linked_list.tampilkan()
 
 # Melakukan bubble sorting
-print("Linked list saat dilakukan bubble sorting")
+# print("Linked list saat dilakukan bubble sorting")
 linked_list.bubble_sort()
+
+print("=============================================================")
 
 # Menampilkan isi linked list setelah dilakukan bubble sorting
 print("Linked list setelah dilakukan bubble sorting")
