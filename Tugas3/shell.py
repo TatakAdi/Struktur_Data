@@ -1,27 +1,26 @@
-def shellSort(array, n):
+import random
+
+def shellSort(array):
+    n = len(array)
     step = 1
-    while step < n // 3:
-        step = step * 3 + 1
+    while step < n // 2:
+        step = step * 3 + 1 
 
     while step >= 1:
-        print(f"Step {step} : {array}")  
         for i in range(step, n):
             temp = array[i]
             j = i
             while j >= step and array[j - step] > temp:
                 array[j] = array[j - step]
                 j -= step
-                if array[j] != temp:
-                    print(f"{temp} <--> {array[j]}")
             array[j] = temp
-            print(f"Step {step} : {array}")
-        step //= 3
+        step //= 2
 
 
-data = [10,1,7,18,29,5,10,23,17,33,4,12,8]
+data = [random.randint(1,101) for i in range (100)]
 size = len(data)
 print('Sebelum sorting:')
 print(data)
-shellSort(data, size)
+shellSort(data)
 print('Setelah sorting:')
 print(data)
