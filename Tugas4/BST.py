@@ -93,6 +93,3 @@ r = insert(r,65)
 r = insert(r,90)
 
 order(r)
-print("\nSatu elemen dihapus")
-r =remove(r,35)
-order(r)
