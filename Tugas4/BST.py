@@ -36,15 +36,41 @@ def Postorder(node):
     else : 
         return "Ini bukan BST"
 
-# def remove(node,root):
-#     if node is None:
-#         return root
-#     if root < node.root:
-#         node.left = remove(node.left,root)
-#         return root
-#     elif root > node.root:
-#         node.right = remove(node.right, root)
+def remove(node,k):
+    if node is None:
+        return node
+    if k < node.root:
+        node.left = remove(node.left,k)
+        return node
+    elif k > node.root:
+        node.right = remove(node.right, k)
+        return node
 
+    if node.left is None:
+        temp = node.right
+        del node
+        return temp
+    elif node.right is None:
+        temp = node.left
+        del node
+        return temp
+    else:
+        suksesor = node
+
+        succ = node.right
+        while succ.left is not None:
+            suksesor = succ
+            succ = succ.left
+
+        if suksesor != node:
+            suksesor.left = succ.right
+        else:
+            suksesor.right = succ.right
+        
+        node.root = succ.root
+
+        del succ
+        return node
 
 def order(root):
     print("BST saat Preorder : ")
@@ -62,5 +88,11 @@ r = insert(r,40)
 r = insert(r,70)
 r = insert(r,60)
 r = insert(r,80)
+r = insert(r,35)
+r = insert(r,65)
+r = insert(r,90)
 
+order(r)
+print("\nSatu elemen dihapus")
+r =remove(r,35)
 order(r)
