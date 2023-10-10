@@ -33,53 +33,40 @@ def Postorder(node):
         Postorder(node.left)
         Postorder(node.right)
         print(node.root,end=" ")
-    else : 
-        return "Ini bukan BST"
 
-def remove(node,k):
+def remove(node, k):
     if node is None:
         return node
-    if k < node.root:
-        node.left = remove(node.left,k)
-        return node
+    elif k < node.root:
+        node.left = remove(node.left, k)
     elif k > node.root:
         node.right = remove(node.right, k)
-        return node
-
-    if node.left is None:
-        temp = node.right
-        del node
-        return temp
-    elif node.right is None:
-        temp = node.left
-        del node
-        return temp
-    else:
-        suksesor = node
-
-        succ = node.right
-        while succ.left is not None:
-            suksesor = succ
-            succ = succ.left
-
-        if suksesor != node:
-            suksesor.left = succ.right
+    else: 
+        if node.left is None:
+            temp = node.right
+            del node
+            return temp
+        elif node.right is None:
+            temp = node.left
+            del node
+            return temp
         else:
-            suksesor.right = succ.right
-        
-        node.root = succ.root
-
-        del succ
-        return node
+            suksesor = node.right
+            while suksesor.left is not None:
+                suksesor = suksesor.left
+            node.root = suksesor.root
+            node.right = remove(node.right, suksesor.root)
+    return node
 
 def order(root):
-    print("BST saat Preorder : ")
+    print("\nBST saat Preorder : ")
     Preorder(root)
     print("\nBST saat inorder : ")
     inorder(root)
     print("\nBST saat Postorder : ")
     Postorder(root)
 
+#Nilai data di BST
 r = None
 r = insert(r,50)
 r = insert(r,30)
@@ -92,8 +79,13 @@ r = insert(r,35)
 r = insert(r,65)
 r = insert(r,90)
 
+# Menampilkan BST sebelum penghapusan
+print("BST Sebelum Penghapusan:")
 order(r)
 
-print("BST setelah dihapus : ")
-r = remove(r,65)
+r = remove(r, 65)
+
+# Menampilkan BST setelah penghapusan
+print("\nBST Setelah Penghapusan:")
+
 order(r)
